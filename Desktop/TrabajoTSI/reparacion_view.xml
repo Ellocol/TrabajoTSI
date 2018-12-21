@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="Reparacion" model="ir.actions.act_window">
+			<field name="name">Reparacion</field>
+			<field name="res_model">reparacion</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+			
+		</record>
+		
+		<menuitem name="Reparacion" id="reparacion_submenu" parent="cliente"
+			sequence="100" action="Empleado" />
+		<menuitem name="Ver reparacion" id="reparacion_submenu1" parent="reparacion_submenu"
+			sequence="110" action="Reparacion" />
+	</data>
+</openerp>

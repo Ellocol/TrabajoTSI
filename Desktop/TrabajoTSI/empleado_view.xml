@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="Empleado" model="ir.actions.act_window">
+			<field name="name">Empleado</field>
+			<field name="res_model">empleado</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+			
+		</record>
+		
+		<menuitem name="Empleados" id="empleado_submenu" parent="cliente"
+			sequence="100" action="Empleado" />
+		<menuitem name="Ver empleados" id="empleado_submenu1" parent="empleado_submenu"
+			sequence="110" action="Empleado" />
+	</data>
+</openerp>

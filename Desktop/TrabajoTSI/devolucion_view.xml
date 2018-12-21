@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="Devolucion" model="ir.actions.act_window">
+			<field name="name">Devolucion</field>
+			<field name="res_model">devolucion</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+			
+		</record>
+		
+		<menuitem name="Devolucion" id="devolucion_submenu" parent="cliente"
+			sequence="100" action="Devolucion" />
+		<menuitem name="Ver devolucion" id="devolucion_submenu1" parent="devolucion_submenu"
+			sequence="110" action="Devolucion" />
+	</data>
+</openerp>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Alquiler_form">
+			<field name="name">view_TrabajoTSI_Alquiler_form</field>
+			<field name="model">alquiler</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<group>
+						<field name="id_cards" />
+						<field name="fecha_Alquiler" />
+					</group>
+					<group>
+						<field name="importe" />
+						<field name="fecha_fin" />
+					</group>
+					<newline />
+					<group colspan="2">
+						<field name="cliente_id" />
+						<field name="autocaravana_id" />
+					</group>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Alquiler_tree">
+			<field name="name">id="view_TrabajoTSI_Alquiler_tree"</field>
+			<field name="model">alquiler</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="id_cards" />
+					<field name="importe" />
+					<field name="cliente_id" />
+					<field name="autocaravana_id" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Alquiler_calendar">
+			<field name="name">view_TrabajoTSI_Alquiler_calendar</field>
+			<field name="model">alquiler</field>
+			<field name="type">calendar</field>
+			<field name="arch" type="xml">
+				<calendar string="Alquileres" color="autocaravana_id"
+					date_start="fecha_Alquiler" date_stop="fecha_fin">
+					<field name="cliente_id" />
+				</calendar>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Alquiler_search">
+			<field name="name">view_TrabajoTSI_Alquiler_search</field>
+			<field name="model">alquiler</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+				<search string="No se ve">
+					<group expand="0" string="Agrupar por...">
+						<filter name="group_by_alquiler" string="Alquiler"
+							context="{'group_by':'cliente_id'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+		<record id="Alquiler" model="ir.actions.act_window">
+			<field name="name">Alquiler</field>
+			<field name="res_model">alquiler</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree,calendar</field>
+			<field name="search_view_id" ref="view_TrabajoTSI_Alquiler_search" />
+		</record>
+		<menuitem name="Alquiler" id="alquiler_submenu" parent="cliente"
+			sequence="100" action="Alquiler" />
+		<menuitem name="Ver alquiler" id="alquiler_submenu1" parent="alquiler_submenu"
+			sequence="110" action="Alquiler" />
+	</data>
+</openerp>
