@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Autocaravanas_form">
+			<field name="name">view_TrabajoTSI_Autocaravanas_form</field>
+			<field name="model">autocaravanas</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<group>
+						<field name="identificador" />
+						<field name="name" />
+						<field name="modelo" />
+						<field name="alquiler_id">
+							<tree>
+								<field name="cliente_id" />
+								<field name="fecha_Alquiler" />
+								<field name="fecha_fin" />
+								<field name="importe" />
+							</tree>
+						</field>
+					</group>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Autocaravanas_tree">
+			<field name="name">view_TrabajoTSI_Autocaravanas_tree</field>
+			<field name="model">autocaravanas</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="identificador" />
+					<field name="name" />
+					<field name="modelo" />
+					<field name="alquiler_id" />
+				</tree>
+			</field>
+		</record>
+		<record id="Autocaravanas" model="ir.actions.act_window">
+			<field name="name">Autocaravanas</field>
+			<field name="res_model">autocaravanas</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+		</record>
+		<menuitem name="Autocaravanas" id="autocaravanas_submenu"
+			parent="cliente" sequence="100" action="Autocaravanas" />
+		<menuitem name="Ver autocaravanas" id="autocaravanas_submenu1"
+			parent="autocaravanas_submenu" sequence="110" action="Autocaravanas" />
+	</data>
+</openerp>

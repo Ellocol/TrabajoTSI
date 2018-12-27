@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="Proveedor" model="ir.actions.act_window">
+			<field name="name">Proveedor</field>
+			<field name="res_model">proveedor</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+		</record>
+		
+		<menuitem name="Proveedor" id="proveedor_submenu" parent="cliente"
+			sequence="100" action="Proveedor" />
+		<menuitem name="Ver proveedor" id="proveedor_submenu1" parent="proveedor_submenu"
+			sequence="110" action="Proveedor" />
+	</data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="Descuento" model="ir.actions.act_window">
+			<field name="name">Descuento</field>
+			<field name="res_model">descuento</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+			
+		</record>
+		
+		<menuitem name="Descuento" id="descuento_submenu" parent="cliente"
+			sequence="100" action="Descuento" />
+		<menuitem name="Ver descuento" id="descuento_submenu1" parent="descuento_submenu"
+			sequence="110" action="Descuento" />
+	</data>
+</openerp>

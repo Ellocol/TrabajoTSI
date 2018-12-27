@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Devolucion_form">
+			<field name="name">view_TrabajoTSI_Devolucion_form</field>
+			<field name="model">devolucion</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<field name="identificador" />
+					<field name="fecha_devolucion" />
+					<field name="empleado_id" />
+					<field name="autocaravana_id" />
+					<field name="cliente_id" />
+					<newline></newline>
+					<field name="descripcion" />
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Devolucion_tree">
+			<field name="name">id="view_TrabajoTSI_Devolucion_tree"</field>
+			<field name="model">devolucion</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="identificador" />
+					<field name="fecha_devolucion" />
+					<field name="empleado_id" />
+					<field name="autocaravana_id" />
+					<field name="cliente_id"/>
+				</tree>
+			</field>
+		</record>
+		<record id="Devolucion" model="ir.actions.act_window">
+			<field name="name">Devolucion</field>
+			<field name="res_model">devolucion</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+
+		</record>
+
+		<menuitem name="Devolucion" id="devolucion_submenu" parent="cliente"
+			sequence="100" action="Devolucion" />
+		<menuitem name="Ver devolucion" id="devolucion_submenu1"
+			parent="devolucion_submenu" sequence="110" action="Devolucion" />
+	</data>
+</openerp>

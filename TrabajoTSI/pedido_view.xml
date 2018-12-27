@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="Pedido" model="ir.actions.act_window">
+			<field name="name">Pedido</field>
+			<field name="res_model">pedido</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+		</record>
+		
+		<menuitem name="Pedidos" id="pedido_submenu" parent="cliente"
+			sequence="100" action="Pedido" />
+		<menuitem name="Ver pedidos" id="pedido_submenu1" parent="pedido_submenu"
+			sequence="110" action="Pedido" />
+	</data>
+</openerp>
