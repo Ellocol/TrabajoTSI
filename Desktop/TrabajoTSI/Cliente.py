@@ -35,6 +35,7 @@ class cliente(osv.Model):
             'foto':fields.binary('foto'),
             'email':fields.char('Email', size=64, required=False),
             'alquiler_ids':fields.one2many('alquiler','cliente_id','Alquileres'),
+            'devolucion_ids':fields.one2many('devolucion','cliente_id','Devolucion'),
            
             
         }

@@ -33,4 +33,5 @@ class autocaravanas(osv.Model):
             'name':fields.char('Nombre', size=64, required=True, readonly=False),
             'modelo':fields.char('Modelo', size=64, required=True, readonly=False),
             'alquiler_id':fields.one2many('alquiler','autocaravana_id','Alquiler'),
+            'devolucion_id':fields.one2many('devolucion','autocaravana_id','Devolucion'),
         }

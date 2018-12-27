@@ -32,6 +32,11 @@ class empleado(osv.Model):
             'identificador':fields.char('Id', size=10, required=True),
             'telefono':fields.integer('Telefono',size=9),
             'name':fields.char('Nombre', size=64, required=True),
+            'foto':fields.binary('foto'),
             'apellidos':fields.char('Apellidos', size=64, required=True),
             'email':fields.char('Email', size=64, required=False),
+            'alquiler_ids':fields.one2many('alquiler','empleado_id','Alquileres'),
+            'pedido_ids':fields.one2many('pedido','empleado_id','Pedidos'),
+            'devolucion_ids':fields.one2many('devolucion','empleado_id','Devolucion'),
+            
         }

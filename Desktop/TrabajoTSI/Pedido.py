@@ -32,4 +32,5 @@ class pedido(osv.Model):
            'identificador':fields.char('Id', size=10, required=True),
            'modelo':fields.char('Modelo', size=64, required=True, readonly=False),
            'importe':fields.float('importe',required=True),
+           'empleado_id': fields.many2one('empleado','Empleado', required=True),
         }

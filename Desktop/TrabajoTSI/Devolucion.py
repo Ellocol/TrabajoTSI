@@ -32,5 +32,7 @@ class devolucion(osv.Model):
             'identificador':fields.char('Id', size=10, required=True),           
             'fecha_devolucion': fields.datetime('Fecha devolucion',required=True, autodate = True),
             'descripcion':fields.text('Descripcion'),
-
+            'empleado_id': fields.many2one('empleado','Empleado', required=True),
+            'autocaravana_id': fields.many2one('autocaravanas','Autocaravana', required=True),
+            'cliente_id': fields.many2one('cliente','Cliente', required=True),
         }

@@ -31,8 +31,9 @@ class alquiler(osv.Model):
     _columns = {
             'id_cards':fields.char('Id', size=9, required=True),         
             'importe':fields.float('importe',required=True),
-            'fecha_Alquiler': fields.datetime('Fecha alquiler',required=True, autodate = True),
-            'fecha_fin': fields.datetime('fecha fin',required=True, autodate = True),
-            'cliente_id': fields.many2one('cliente','Cliente'),
-            'autocaravana_id':fields.many2one('autocaravanas','Autocaravana'),
+            'fecha_Alquiler': fields.date('Fecha alquiler',required=True, autodate = True),
+            'fecha_fin': fields.date('Fecha fin',required=True, autodate = True),
+            'cliente_id': fields.many2one('cliente','Cliente', required=True),
+            'autocaravana_id':fields.many2one('autocaravanas','Autocaravana', required=True),
+            'empleado_id': fields.many2one('empleado','Empleado', required=True),
         }

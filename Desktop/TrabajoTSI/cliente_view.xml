@@ -46,7 +46,7 @@
 			<field name="type">search</field>
 			<field name="arch" type="xml">
 				<search string="No se ve">
-					<filter string="ALquiler > 2" domain="[('alquiler_ids','&gt;',2)]" />
+					<filter string="Alquileres" domain="[('alquiler_ids','&gt;',2)]" />
 					<separator orientation="vertical" />
 					<field name="alquiler_ids" />
 				</search>
