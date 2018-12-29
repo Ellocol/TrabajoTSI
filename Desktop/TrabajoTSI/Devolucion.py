@@ -35,4 +35,7 @@ class devolucion(osv.Model):
             'empleado_id': fields.many2one('empleado','Empleado', required=True),
             'autocaravana_id': fields.many2one('autocaravanas','Autocaravana', required=True),
             'cliente_id': fields.many2one('cliente','Cliente', required=True),
+            'state':fields.selection([('solicitada', 'Solicitada'),('admitida', 'Admitida'), ('cancelada', 'Cancelada'),('devuelta','Devuelta')], 'Estados'),
         }
+    _defaults = {'state':'solicitada'}
+    

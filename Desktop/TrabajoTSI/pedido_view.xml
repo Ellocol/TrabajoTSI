@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
 	<data>
+
+		<record model="ir.ui.view" id="view_TrabajoTSI_Pedido_form">
+			<field name="name">view_TrabajoTSI_Pedido_form</field>
+			<field name="model">pedido</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<group colspan="4">
+						<field name="identificador" />
+						<field name="modelo" />
+						<field name="importe" />
+					</group>
+					<field name="empleado_id" />
+					<field name="proveedor_id" />
+					<separator string="Worfklow" colspan="4" />
+					<field name='state' widget='statusbar'
+						statusbar_visible="solicitado,admitido,cancelado,enviado"
+						statusbar_colors='{"solicitado":"blue","admitido": "orange","cancelado": "red","enviado":"green"}' />
+					<button name="admitir" states="solicitado" string="Admitir"
+						colspan="1" icon="gtk-ok" />
+					<button name="cancelar" states="solicitado" string="Cancelar"
+						colspan="1" icon="gtk-cancel" />
+					<button name="enviar" states="admitido" string="Enviar"
+						colspan="1" icon="gtk-apply" />
+				</form>
+			</field>
+
+		</record>
+
 		<record id="Pedido" model="ir.actions.act_window">
 			<field name="name">Pedido</field>
 			<field name="res_model">pedido</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">form,tree</field>
 		</record>
-		
+
 		<menuitem name="Pedidos" id="pedido_submenu" parent="cliente"
 			sequence="100" action="Pedido" />
 		<menuitem name="Ver pedidos" id="pedido_submenu1" parent="pedido_submenu"

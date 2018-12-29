@@ -31,6 +31,9 @@ class pedido(osv.Model):
     _columns = {
            'identificador':fields.char('Id', size=10, required=True),
            'modelo':fields.char('Modelo', size=64, required=True, readonly=False),
-           'importe':fields.float('importe',required=True),
-           'empleado_id': fields.many2one('empleado','Empleado', required=True),
+           'importe':fields.float('importe', required=True),
+           'empleado_id': fields.many2one('empleado', 'Empleado', required=True),
+           'proveedor_id': fields.many2one('proveedor', 'Proveedor', required=True),
+           'state':fields.selection([('solicitado', 'Solicitado'),('admitido', 'Admitido'), ('cancelado', 'Cancelado'),('enviado','Enviado')], 'Estados'),
         }
+    _defaults = {'state':'solicitado'}

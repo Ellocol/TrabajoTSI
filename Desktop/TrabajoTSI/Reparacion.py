@@ -34,4 +34,6 @@ class reparacion(osv.Model):
             'fecha_inicio': fields.datetime('Fecha inicio',required=True, autodate = True),
             'fecha_fin': fields.datetime('fecha fin',required=True, autodate = True),
             'descripcion':fields.text('Descripcion'),
+            
+            'autocaravanas_ids': fields.many2many( 'autocaravanas','reparacion_autocaravana_rel', 'reparacion_id', 'autocaravana_id', 'Autocaravanas'),
         }

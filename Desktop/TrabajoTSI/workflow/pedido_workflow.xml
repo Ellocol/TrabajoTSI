@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<!-- Declaración del workflow -->
+		<record id="wkf_pedido" model="workflow">
+			<field name="name">user.basic</field>
+			<field name="osv">pedido</field>
+			<field name="on_create">True</field>
+		</record>
+		<!-- Declaración de nodos -->
+		<record id="act_pedido_solicitado" model="workflow.activity">
+			<field name="wkf_id" ref="wkf_pedido" />
+			<field name="flow_start">True</field>
+			<field name="name">Solicitado</field>
+			<field name="kind">dummy</field>
+		</record>
+		<record id="act_pedido_admitido" model="workflow.activity">
+			<field name="wkf_id" ref="wkf_pedido" />
+			<field name="name">Admitido</field>
+			<field name="kind">function</field>
+			<field name="action">write({'state':'admitido'}) </field>
+		</record>
+		<record id="act_pedido_cancelado" model="workflow.activity">
+			<field name="wkf_id" ref="wkf_pedido" />
+			<field name="name">Cancelado</field>
+			<field name="kind">function</field>
+			<field name="action">write({'state':'cancelado'}) </field>
+			<field name="flow_stop">True</field>
+		</record>
+		<record id="act_pedido_enviado" model="workflow.activity">
+			<field name="wkf_id" ref="wkf_pedido" />
+			<field name="name">Enviado</field>
+			<field name="kind">function</field>
+			<field name="action">write({'state':'enviado'}) </field>
+			<field name="flow_stop">True</field>
+		</record>
+		<!-- Declaración de las transiciones -->
+		<record id="trans_solicitado_admitido" model="workflow.transition">
+			<field name="act_from" ref="act_pedido_solicitado" />
+			<field name="act_to" ref="act_pedido_admitido" />
+			<field name="signal">admitir</field>
+		</record>
+		<record id="trans_solicitado_cancelado" model="workflow.transition">
+			<field name="act_from" ref="act_pedido_solicitado" />
+			<field name="act_to" ref="act_pedido_cancelado" />
+			<field name="signal">cancelar</field>
+		</record>
+		<record id="trans_admitido_enviado" model="workflow.transition">
+			<field name="act_from" ref="act_pedido_admitido" />
+			<field name="act_to" ref="act_pedido_enviado" />
+			<field name="signal">enviar</field>
+		</record>
+	</data>
+</openerp>

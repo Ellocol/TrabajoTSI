@@ -14,6 +14,16 @@
 					<field name="cliente_id" />
 					<newline></newline>
 					<field name="descripcion" />
+					<separator string="Worfklow" colspan="4" />
+					<field name='state' widget='statusbar'
+						statusbar_visible="solicitada,admitida,cancelada,devuelta"
+						statusbar_colors='{"solicitada":"blue","admitida": "orange","cancelada": "red","devuelta":"green"}' />
+					<button name="admitir" states="solicitada" string="Admitir"
+						colspan="1" icon="gtk-ok" />
+					<button name="cancelar" states="solicitada" string="Cancelar"
+						colspan="1" icon="gtk-cancel" />
+					<button name="devolver" states="admitida" string="Devolver"
+						colspan="1" icon="gtk-apply" />
 				</form>
 			</field>
 		</record>
@@ -27,7 +37,7 @@
 					<field name="fecha_devolucion" />
 					<field name="empleado_id" />
 					<field name="autocaravana_id" />
-					<field name="cliente_id"/>
+					<field name="cliente_id" />
 				</tree>
 			</field>
 		</record>

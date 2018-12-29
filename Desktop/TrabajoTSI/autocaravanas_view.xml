@@ -11,14 +11,40 @@
 						<field name="identificador" />
 						<field name="name" />
 						<field name="modelo" />
-						<field name="alquiler_id">
-							<tree>
-								<field name="cliente_id" />
-								<field name="fecha_Alquiler" />
-								<field name="fecha_fin" />
-								<field name="importe" />
-							</tree>
-						</field>
+						<field name="descuento_id" />
+						<field name="proveedor_id" />
+						<notebook colspan="4">
+							<page string="Alquileres">
+								<field name="alquiler_id" colspan="4" nolabel="1">
+									<tree>
+										<field name="cliente_id" />
+										<field name="fecha_Alquiler" />
+										<field name="fecha_fin" />
+										<field name="importe" />
+									</tree>
+								</field>
+							</page>
+							<page string="Reparaciones">
+								<field name="reparaciones_ids" colspan="4" nolabel="1">
+									<tree>
+										<field name="identificador" />
+										<field name="importe" />
+										<field name="fecha_inicio" />
+									</tree>
+								</field>
+							</page>
+							<page string="Devoluciones">
+								<field name="devolucion_id" colspan="4" nolabel="1">
+									<tree>
+										<field name="identificador" />
+										<field name="fecha_devolucion" />
+										<field name="empleado_id" />
+										<field name="cliente_id" />
+									</tree>
+								</field>
+							</page>
+							
+						</notebook>
 					</group>
 				</form>
 			</field>

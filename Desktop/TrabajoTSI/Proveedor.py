@@ -32,4 +32,6 @@ class proveedor(osv.Model):
             'identificador':fields.char('Id', size=10, required=True),
             'telefono':fields.integer('Telefono',size=9),
             'empresa':fields.char('Empresa', size=64, required=True, readonly=False),
+            'autocaravanas_ids':fields.one2many('autocaravanas','proveedor_id','Autocaravanas',required=True),
+            'pedidos_ids':fields.one2many('pedido','proveedor_id','Pedidos'),
         }
