@@ -10,6 +10,7 @@
 					<group colspan="2">
 						<field name="identificador" />
 						<field name="name" />
+						<field name="apellidos"/>
 						<field name="email" />
 					</group>
 					<field name="foto" widget="image" colspan="2" nolabel="1" />
@@ -18,7 +19,7 @@
 					<newline />
 					<notebook colspan="4">
 						<page string="Alquileres">
-							<field name="alquiler_ids" colspan="4">
+							<field name="alquiler_ids" colspan="4" nolabel="1">
 								<tree>
 									<field name="empleado_id" />
 									<field name="fecha_Alquiler" />
@@ -29,7 +30,7 @@
 							</field>
 						</page>
 						<page string="Pedidos">
-							<field name="pedido_ids" colspan="4">
+							<field name="pedido_ids" colspan="4" nolabel="1">
 								<tree>
 									<field name="identificador" />
 									<field name="modelo" />
@@ -39,7 +40,7 @@
 							</field>
 						</page>
 						<page string="Devoluciones">
-							<field name="devolucion_ids" colspan="4">
+							<field name="devolucion_ids" colspan="4" nolabel="1">
 								<tree>
 									<field name="identificador" />
 									<field name="fecha_devolucion" />

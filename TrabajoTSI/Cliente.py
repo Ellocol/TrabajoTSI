@@ -27,15 +27,23 @@ class cliente(osv.Model):
 
     _name = 'cliente'
     _description = 'Informacion del cliente'
- 
+    def _ocupacionTotal(self, cr, uid, ids, field, arg, context=None):                    
+        res = {} 
+        
+        # Recorre todas las clases y calcula el número de gymusers asociados
+        for clase in self.browse(cr, uid, ids, context=context):        
+            res[clase.id] = len(clase.alquiler_ids)    
+        return    res 
+    
     _columns = {
             'name':fields.char('Nombre', size=64, required=True),
-            'dni':fields.char('DNI',size=9,required=True),
-            'telefono':fields.integer('Telefono',size=9),
+            'dni':fields.char('DNI', size=9, required=True),
+            'telefono':fields.integer('Telefono', size=9),
             'foto':fields.binary('foto'),
             'email':fields.char('Email', size=64, required=False),
-            'alquiler_ids':fields.one2many('alquiler','cliente_id','Alquileres'),
-            'devolucion_ids':fields.one2many('devolucion','cliente_id','Devolucion'),
-           
+            'alquiler_ids':fields.one2many('alquiler', 'cliente_id', 'Alquileres'),
+            'devolucion_ids':fields.one2many('devolucion', 'cliente_id', 'Devolucion'),
+            'ocupacion': fields.function(_ocupacionTotal, type='integer', string='Ocupacion total', store=True),
             
         }
+    _sql_constraints = [ ('dni_uniq', 'unique (dni)', 'El dni ya existe'),  ]

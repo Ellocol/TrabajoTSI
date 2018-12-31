@@ -19,7 +19,20 @@
 					<group colspan="2">
 						<field name="cliente_id" />
 						<field name="autocaravana_id" />
+						<field name="empleado_id"/>
 					</group>
+					<separator string="Worfklow" colspan="4" />
+					<field name='state' widget='statusbar'
+	statusbar_visible="solicitado,admitido,cancelado,realizado"
+	statusbar_colors='{"solicitado":"blue","admitido": "orange","cancelado": "red","realizado":"green"}' colspan="4"/>
+					<group>
+						<button name="admitir" states="solicitado" string="Admitir"
+							colspan="1" icon="gtk-ok" />
+						<button name="cancelar" states="solicitado" string="Cancelar"
+							colspan="1" icon="gtk-cancel" />
+					</group>
+					<button name="realizar" states="admitido" string="realizar"
+						colspan="1" icon="gtk-apply" />
 				</form>
 			</field>
 		</record>

@@ -27,11 +27,23 @@ class reparacion(osv.Model):
 
     _name = 'reparacion'
     _description = 'Informacion de la reparacion'
+    
+    def desapuntarAutocaravanas(self,cr,uid,ids,context=None):
+        # ids es una lista de ids
+        # desde la vista nos llega el id (en ids[0])de la clase
+        # que se está editando en la vista de formulario
+    
+        # Eliminamos los registros de la relación many2many
+        resultado =  self.write(cr,uid,ids, { 'autocaravanas_ids' : [ (5,  ) ] }  , context=None)
+        
+        return resultado
  
     _columns = {
             'identificador':fields.char('Id', size=10, required=True),
             'importe':fields.float('importe',required=True),
-            'fecha_inicio': fields.datetime('Fecha inicio',required=True, autodate = True),
-            'fecha_fin': fields.datetime('fecha fin',required=True, autodate = True),
+            'fecha_inicio': fields.date('Fecha inicio',required=True, autodate = True),
+            'fecha_fin': fields.date('Fecha fin',required=True, autodate = True),
             'descripcion':fields.text('Descripcion'),
+            
+            'autocaravanas_ids': fields.many2many( 'autocaravanas','reparacion_autocaravana_rel', 'reparacion_id', 'autocaravana_id', 'Autocaravanas'),
         }

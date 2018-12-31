@@ -31,7 +31,7 @@
     """,
     "init_xml": [],
     'update_xml': [],
-    'data': ['cliente_view.xml','alquiler_view.xml','autocaravanas_view.xml','empleado_view.xml','pedido_view.xml','proveedor_view.xml','reparacion_view.xml','descuento_view.xml','devolucion_view.xml'],
+    'data': ['cliente_view.xml','alquiler_view.xml','autocaravanas_view.xml','empleado_view.xml','pedido_view.xml','proveedor_view.xml','reparacion_view.xml','descuento_view.xml','devolucion_view.xml','pedido_workflow.xml'],
     'demo_xml': [],
     'installable': True,
     'active': False

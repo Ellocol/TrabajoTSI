@@ -30,9 +30,12 @@ class devolucion(osv.Model):
  
     _columns = {
             'identificador':fields.char('Id', size=10, required=True),           
-            'fecha_devolucion': fields.datetime('Fecha devolucion',required=True, autodate = True),
+            'fecha_devolucion': fields.date('Fecha devolucion',required=True, autodate = True),
             'descripcion':fields.text('Descripcion'),
             'empleado_id': fields.many2one('empleado','Empleado', required=True),
             'autocaravana_id': fields.many2one('autocaravanas','Autocaravana', required=True),
             'cliente_id': fields.many2one('cliente','Cliente', required=True),
+            'state':fields.selection([('solicitada', 'Solicitada'),('admitida', 'Admitida'), ('cancelada', 'Cancelada'),('devuelta','Devuelta')], 'Estados'),
         }
+    _defaults = {'state':'solicitada'}
+    

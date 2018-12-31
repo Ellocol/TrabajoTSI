@@ -36,4 +36,6 @@ class alquiler(osv.Model):
             'cliente_id': fields.many2one('cliente','Cliente', required=True),
             'autocaravana_id':fields.many2one('autocaravanas','Autocaravana', required=True),
             'empleado_id': fields.many2one('empleado','Empleado', required=True),
+            'state':fields.selection([('solicitado', 'Solicitado'),('admitido', 'Admitido'), ('cancelado', 'Cancelado'),('realizado','Realizado')], 'Estados'),
         }
+    _defaults = {'state':'solicitado'}

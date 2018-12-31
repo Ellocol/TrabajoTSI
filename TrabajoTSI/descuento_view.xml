@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
 	<data>
+	<record model="ir.ui.view" id="view_TrabajoTSI_Descuento_form">
+			<field name="name">view_TrabajoTSI_Descuento_form</field>
+			<field name="model">descuento</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<field name="identificador" />
+					<field name="reduccion" />
+					<field name="autocaravanas_ids" colspan="4"/>				
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Descuento_tree">
+			<field name="name">view_TrabajoTSI_Descuento_tree</field>
+			<field name="model">descuento</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="identificador" />
+					<field name="reduccion" />
+					<field name="autocaravanas_ids" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Descuento_search">
+			<field name="name">view_TrabajoTSI_Descuento_search</field>
+			<field name="model">descuento</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+				<search string="No se ve">
+					<filter string="Reduccion mayor de 50" domain="[('reduccion','&gt;',50)]" />
+					<separator orientation="vertical" />
+				</search>
+			</field>
+		</record>
 		<record id="Descuento" model="ir.actions.act_window">
 			<field name="name">Descuento</field>
 			<field name="res_model">descuento</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">form,tree</field>
-			
+			<field name="search_view_id" ref="view_TrabajoTSI_Descuento_search" />
 		</record>
 		
 		<menuitem name="Descuento" id="descuento_submenu" parent="cliente"

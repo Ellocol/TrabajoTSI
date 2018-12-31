@@ -31,4 +31,5 @@ class descuento(osv.Model):
     _columns = {
            'identificador':fields.char('Id', size=9, required=True),         
            'reduccion':fields.float('reduccion',required=True),
+           'autocaravanas_ids':fields.one2many('autocaravanas','descuento_id','Autocaravanas'),
         }
