@@ -30,8 +30,12 @@ class proveedor(osv.Model):
  
     _columns = {
             'identificador':fields.char('Id', size=10, required=True),
-            'telefono':fields.integer('Telefono',size=9),
+            'telefono':fields.integer('Telefono', size=9),
             'empresa':fields.char('Empresa', size=64, required=True, readonly=False),
-            'autocaravanas_ids':fields.one2many('autocaravanas','proveedor_id','Autocaravanas',required=True),
-            'pedidos_ids':fields.one2many('pedido','proveedor_id','Pedidos'),
+            'foto':fields.binary('foto'),
+            'email':fields.char('Email', size=64, required=False),
+            'ciudad': fields.char('Ciudad', size=64, required=True),
+            'cp': fields.integer('Cp', size=10, required=True),
+            'autocaravanas_ids':fields.one2many('autocaravanas', 'proveedor_id', 'Autocaravanas', required=True),
+            'pedidos_ids':fields.one2many('pedido', 'proveedor_id', 'Pedidos'),
         }

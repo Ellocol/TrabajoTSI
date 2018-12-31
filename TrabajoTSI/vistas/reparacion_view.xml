@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Reparacion_form">
+			<field name="name">view_TrabajoTSI_Reparacion_form</field>
+			<field name="model">reparacion</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<group colspan="4">
+						<field name="identificador" />
+						<field name="importe" />
+						<field name="fecha_inicio" />
+						<field name="fecha_fin" />
+					</group>
+					<group colspan="4">
+						<field name="descripcion" />
+					</group>
+					<field name="autocaravanas_ids" colspan="4" />
+					<newline></newline>
+					<separator></separator>
+					<button name="desapuntarAutocaravanas" string="Eliminar Autocaravanas"
+						type="object"></button>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Reparacion_tree">
+			<field name="name">view_TrabajoTSI_Reparacion_tree</field>
+			<field name="model">reparacion</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="identificador" />
+					<field name="importe" />
+					<field name="fecha_inicio" />
+					<field name="fecha_fin" />
+					<field name="autocaravanas_ids" />
+				</tree>
+			</field>
+		</record>
+		<record id="Reparacion" model="ir.actions.act_window">
+			<field name="name">Reparacion</field>
+			<field name="res_model">reparacion</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree</field>
+
+		</record>
+
+		<menuitem name="Reparacion" id="reparacion_submenu" parent="cliente"
+			sequence="100" action="Empleado" />
+		<menuitem name="Ver reparacion" id="reparacion_submenu1"
+			parent="reparacion_submenu" sequence="110" action="Reparacion" />
+	</data>
+</openerp>

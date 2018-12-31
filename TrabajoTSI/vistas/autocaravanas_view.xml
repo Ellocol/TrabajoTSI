@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Autocaravanas_form">
+			<field name="name">view_TrabajoTSI_Autocaravanas_form</field>
+			<field name="model">autocaravanas</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+
+					<group colspan="2">
+						<field name="identificador" />
+						<field name="name" />
+						<field name="modelo" />
+						<field name="precio" />
+					</group>
+					<field name="foto" widget="image" colspan="2" nolabel="1" />
+					<newline></newline>
+					<field name="descuento_id" />
+					<field name="proveedor_id" />
+					<notebook colspan="4">
+						<page string="Alquileres">
+							<field name="alquiler_id" colspan="4" nolabel="1">
+								<tree>
+									<field name="cliente_id" />
+									<field name="fecha_Alquiler" />
+									<field name="fecha_fin" />
+									<field name="importe" />
+								</tree>
+							</field>
+						</page>
+						<page string="Reparaciones">
+							<field name="reparaciones_ids" colspan="4" nolabel="1">
+								<tree>
+									<field name="identificador" />
+									<field name="importe" />
+									<field name="fecha_inicio" />
+								</tree>
+							</field>
+						</page>
+						<page string="Devoluciones">
+							<field name="devolucion_id" colspan="4" nolabel="1">
+								<tree>
+									<field name="identificador" />
+									<field name="fecha_devolucion" />
+									<field name="empleado_id" />
+									<field name="cliente_id" />
+								</tree>
+							</field>
+						</page>
+
+					</notebook>
+
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Autocaravanas_tree">
+			<field name="name">view_TrabajoTSI_Autocaravanas_tree</field>
+			<field name="model">autocaravanas</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="identificador" />
+					<field name="name" />
+					<field name="modelo" />
+					<field name="alquiler_id" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Autocaravanas_search">
+			<field name="name">view_TrabajoTSI_Autocaravanas_search</field>
+			<field name="model">autocaravanas</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+				<search string="No se ve">
+					<group expand="0" string="Agrupar por...">
+						<filter name="group_by_alquiler" string="Modelo"
+							context="{'group_by':'modelo'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_autocaravanas_kanban">
+			<field name="name">view_autocaravanas_kanban</field>
+			<field name="model">autocaravanas</field>
+			<field name="type">kanban</field>
+			<field name="arch" type="xml">
+				<kanban>
+					<templates>
+						<t t-name="kanban-box">
+							<div class="custom">
+								<div class="oe_resource_vignette">
+									<div class="oe_resource_image">
+										<a type="edit">
+											<img t-att-src="kanban_image('autocaravanas', 'foto', record.id.value)"
+												class="oe_resource_picture" width="100px" />
+										</a>
+									</div>
+									<div class="oe_resource_details">
+										<ul>
+											<li>
+												<h4 class="oe_partner_heading">
+													<a type="open">
+														<field name="name" />
+													</a>
+												</h4>
+											</li>
+											<li>
+												<i>Descuento: </i>
+												<field name="descuento_id" />
+
+											</li>
+											<li>
+												<i>Modelo: </i>
+												<field name="modelo" />
+											</li>
+											<li>
+												<i>Proveedor: </i>
+												<field name="proveedor_id" />
+											</li>
+											<li>
+												<i>Precio: </i>
+												<field name="precio" />
+											</li>
+
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		<record id="Autocaravanas" model="ir.actions.act_window">
+			<field name="name">Autocaravanas</field>
+			<field name="res_model">autocaravanas</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree,kanban</field>
+			<field name="search_view_id" ref="view_TrabajoTSI_Autocaravanas_search" />
+		</record>
+		<menuitem name="Autocaravanas" id="autocaravanas_submenu"
+			parent="cliente" sequence="100" action="Autocaravanas" />
+		<menuitem name="Ver autocaravanas" id="autocaravanas_submenu1"
+			parent="autocaravanas_submenu" sequence="110" action="Autocaravanas" />
+	</data>
+</openerp>

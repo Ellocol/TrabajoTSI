@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Cliente_form">
+			<field name="name">view_TrabajoTSI_Cliente_form</field>
+			<field name="model">cliente</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<group colspan="2">
+						<field name="dni" />
+						<field name="name" />
+						<field name="email" />
+						<field name="ciudad"/>
+						<field name="cp" />
+					</group>
+					<field name="foto" widget="image" colspan="2" nolabel="1" />
+					<newline></newline>
+					<field name="telefono" />
+					<newline />
+					<field name="alquiler_ids" colspan="4">
+						<tree>
+							<field name="cliente_id" />
+							<field name="fecha_Alquiler" />
+							<field name="fecha_fin" />
+							<field name="autocaravana_id" />
+						</tree>
+					</field>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Cliente_tree">
+			<field name="name">view_TrabajoTSI_Cliente_tree</field>
+			<field name="model">cliente</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="dni" />
+					<field name="name" />
+					<field name="telefono" />
+					<field name="alquiler_ids" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_Cliente_graph">
+			<field name="name">view_Cliente_graph</field>
+			<field name="model">cliente</field>
+			<field name="type">graph</field>
+			<field name="arch" type="xml">
+				<graph string="Numero de alquileres por cliente" type="pie">
+					<field name="dni" />
+					<field name="ocupacion" />
+				</graph>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Cliente_search">
+			<field name="name">view_TrabajoTSI_Cliente_search</field>
+			<field name="model">cliente</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">
+				<search string="No se ve">
+					<filter string="Alquileres" domain="[('alquiler_ids','&gt;',2)]" />
+					<separator orientation="vertical" />
+					<field name="alquiler_ids" />
+				</search>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_cliente_kanban">
+			<field name="name">view_cliente_kanban</field>
+			<field name="model">cliente</field>
+			<field name="type">kanban</field>
+			<field name="arch" type="xml">
+				<kanban>
+					<templates>
+						<t t-name="kanban-box">
+							<div class="custom">
+								<div class="oe_resource_vignette">
+									<div class="oe_resource_image">
+										<a type="edit">
+											<img t-att-src="kanban_image('cliente', 'foto', record.id.value)"
+												class="oe_resource_picture" width="100px" />
+										</a>
+									</div>
+									<div class="oe_resource_details">
+										<ul>
+											<li>
+												<h4 class="oe_partner_heading">
+													<a type="open">
+														<field name="name" />
+													</a>
+												</h4>
+											</li>
+											<li>
+												<i>Email: </i>
+												<a href="mailto:email">
+													<field name="email" />
+												</a>
+											</li>
+											<li>
+												<i>DNI: </i>
+												<field name="dni" />
+											</li>
+											<li>
+												<i>Telefono: </i>
+												<field name="telefono" />
+											</li>
+											<li>
+												<i>Ciudad: </i>
+												<field name="ciudad" />
+											</li>
+
+											<li>
+												<i>CP: </i>
+												<field name="cp" />
+											</li>
+											
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		
+		<record id="Cliente" model="ir.actions.act_window">
+			<field name="name">Cliente</field>
+			<field name="res_model">cliente</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree,graph,kanban</field>
+			<field name="search_view_id" ref="view_TrabajoTSI_Cliente_search" />
+		</record>
+		<menuitem id="cliente" name="RV-rent" action="Cliente" />
+		<menuitem name="Clientes" id="cliente_submenu" parent="cliente"
+			sequence="100" action="Cliente" />
+		<menuitem name="Ver clientes" id="cliente_submenu1" parent="cliente_submenu"
+			sequence="110" action="Cliente" />
+	</data>
+</openerp>

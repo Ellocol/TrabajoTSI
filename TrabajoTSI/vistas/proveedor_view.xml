@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Proveedor_form">
+			<field name="name">view_TrabajoTSI_Proveedor_form</field>
+			<field name="model">proveedor</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="No se ve">
+					<group colspan="4">
+						<field name="identificador" />
+						<field name="empresa" />
+						<field name="telefono" />
+						<field name="email" />
+						<field name="ciudad" />
+						<field name="cp" />
+					</group>
+					<field name="foto" widget="image" colspan="2" nolabel="1" />
+					<newline></newline>
+					<notebook>
+						<page string="Autocaravanas">
+							<field name="autocaravanas_ids" colspan="4" nolabel="1">
+								<tree>
+									<field name="identificador" />
+									<field name="modelo" />
+									<field name="name" />
+								</tree>
+							</field>
+						</page>
+						<page string="Pedidos">
+							<field name="pedidos_ids" colspan="4" nolabel="1">
+								<tree>
+									<field name="identificador" />
+									<field name="modelo" />
+									<field name="importe" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_TrabajoTSI_Proveedor_tree">
+			<field name="name">view_TrabajoTSI_Proveedor_tree</field>
+			<field name="model">proveedor</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="tree_string">
+					<field name="identificador" />
+					<field name="telefono" />
+					<field name="empresa" />
+					<field name="autocaravanas_ids" />
+					<field name="pedidos_ids" />
+				</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_proveedor_kanban">
+			<field name="name">view_proveedor_kanban</field>
+			<field name="model">proveedor</field>
+			<field name="type">kanban</field>
+			<field name="arch" type="xml">
+				<kanban>
+					<templates>
+						<t t-name="kanban-box">
+							<div class="custom">
+								<div class="oe_resource_vignette">
+									<div class="oe_resource_image">
+										<a type="edit">
+											<img t-att-src="kanban_image('proveedor', 'foto', record.id.value)"
+												class="oe_resource_picture" width="100px" />
+										</a>
+									</div>
+									<div class="oe_resource_details">
+										<ul>
+											<li>
+												<h4 class="oe_partner_heading">
+													<a type="open">
+														<field name="empresa" />
+													</a>
+												</h4>
+											</li>
+											<li>
+												<i>Email: </i>
+												<a href="mailto:email">
+													<field name="email" />
+												</a>
+											</li>
+											<li>
+												<i>ID: </i>
+												<field name="identificador" />
+											</li>
+											<li>
+												<i>Telefono: </i>
+												<field name="telefono" />
+											</li>
+											<li>
+												<i>Ciudad: </i>
+												<field name="ciudad" />
+											</li>
+
+											<li>
+												<i>CP: </i>
+												<field name="cp" />
+											</li>
+
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		<record id="Proveedor" model="ir.actions.act_window">
+			<field name="name">Proveedor</field>
+			<field name="res_model">proveedor</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form,tree,kanban</field>
+		</record>
+
+		<menuitem name="Proveedor" id="proveedor_submenu" parent="cliente"
+			sequence="100" action="Proveedor" />
+		<menuitem name="Ver proveedor" id="proveedor_submenu1"
+			parent="proveedor_submenu" sequence="110" action="Proveedor" />
+	</data>
+</openerp>

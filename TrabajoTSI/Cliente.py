@@ -41,6 +41,8 @@ class cliente(osv.Model):
             'telefono':fields.integer('Telefono', size=9),
             'foto':fields.binary('foto'),
             'email':fields.char('Email', size=64, required=False),
+            'ciudad': fields.char('Ciudad', size=64, required=True),
+            'cp': fields.integer('Cp', size=10, required=True),           
             'alquiler_ids':fields.one2many('alquiler', 'cliente_id', 'Alquileres'),
             'devolucion_ids':fields.one2many('devolucion', 'cliente_id', 'Devolucion'),
             'ocupacion': fields.function(_ocupacionTotal, type='integer', string='Ocupacion total', store=True),

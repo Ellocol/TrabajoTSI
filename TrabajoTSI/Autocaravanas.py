@@ -32,6 +32,8 @@ class autocaravanas(osv.Model):
             'identificador':fields.char('Id', size=10, required=True),    
             'name':fields.char('Nombre', size=64, required=True, readonly=False),
             'modelo':fields.char('Modelo', size=64, required=True, readonly=False),
+            'precio':fields.float('Precio', required=True),
+            'foto':fields.binary('foto'),
             'alquiler_id':fields.one2many('alquiler','autocaravana_id','Alquiler'),
             'devolucion_id':fields.one2many('devolucion','autocaravana_id','Devolucion'),
             'reparaciones_ids': fields.many2many( 'reparacion','reparacion_autocaravana_rel','autocaravana_id', 'reparacion_id','Reparaciones'),
