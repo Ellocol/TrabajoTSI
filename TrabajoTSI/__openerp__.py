@@ -35,7 +35,7 @@
              ,'vistas/pedido_view.xml','vistas/proveedor_view.xml','vistas/reparacion_view.xml','vistas/descuento_view.xml'
              ,'vistas/devolucion_view.xml','workflow/pedido_workflow.xml','workflow/alquiler_workflow.xml',
              'workflow/devolucion_workflow.xml'],
-    'demo_xml': [],
+    'demo_xml': ['demo/TrabajoTSI_demo.xml'],
     'installable': True,
     'active': False
 }

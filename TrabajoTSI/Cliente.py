@@ -33,25 +33,20 @@ class cliente(osv.Model):
             res[cliente.id] = len(cliente.alquiler_ids)    
         return    res 
     
-    def _check_capacity(self, cr, uid, ids):   
-        for cliente in self.browse(cr, uid, ids):
-            if cliente.alquiler_ids < 0 or cliente.alquiler_ids > 2: 
-                return False 
-        return True
+    
     
     _columns = {
             'name':fields.char('Nombre', size=64, required=True),
+            'apellidos':fields.char('Apellidos', size=64, required=True),
             'dni':fields.char('DNI', size=9, required=True),
             'telefono':fields.integer('Telefono', size=9),
             'foto':fields.binary('foto'),
             'email':fields.char('Email', size=64, required=False),
             'ciudad': fields.char('Ciudad', size=64, required=True),
-            'cp': fields.integer('Cp', size=10, required=True),           
+            'cp': fields.integer('Cp', size=10, required=True),     
             'alquiler_ids':fields.one2many('alquiler', 'cliente_id', 'Alquileres'),
             'devolucion_ids':fields.one2many('devolucion', 'cliente_id', 'Devolucion'),
             'ocupacion': fields.function(_ocupacionTotal, type='integer', string='Ocupacion total', store=True),
             
         }
     _sql_constraints = [ ('dni_uniq', 'unique (dni)', 'El dni ya existe'),  ]
-    
-    _constraints = [(_check_capacity, '¡ Numero de alquileres incorrectos !' , [ 'alquiler_ids' ])]

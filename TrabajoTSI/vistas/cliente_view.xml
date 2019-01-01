@@ -10,6 +10,7 @@
 					<group colspan="2">
 						<field name="dni" />
 						<field name="name" />
+						<field name="apellidos" />
 						<field name="email" />
 						<field name="ciudad"/>
 						<field name="cp" />
@@ -37,6 +38,7 @@
 				<tree string="tree_string">
 					<field name="dni" />
 					<field name="name" />
+					<field name="apellidos" />
 					<field name="telefono" />
 					<field name="alquiler_ids" />
 				</tree>
@@ -89,6 +91,10 @@
 														<field name="name" />
 													</a>
 												</h4>
+											</li>
+											<li>
+												<i>Apellidos: </i>
+												<field name="apellidos" />
 											</li>
 											<li>
 												<i>Email: </i>

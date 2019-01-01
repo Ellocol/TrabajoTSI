@@ -12,7 +12,6 @@
 						<field name="identificador" />
 						<field name="name" />
 						<field name="modelo" />
-						<field name="precio" />
 					</group>
 					<field name="foto" widget="image" colspan="2" nolabel="1" />
 					<newline></newline>
@@ -119,11 +118,6 @@
 												<i>Proveedor: </i>
 												<field name="proveedor_id" />
 											</li>
-											<li>
-												<i>Precio: </i>
-												<field name="precio" />
-											</li>
-
 
 										</ul>
 									</div>

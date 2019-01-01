@@ -27,7 +27,11 @@ class alquiler(osv.Model):
 
     _name = 'alquiler'
     _description = 'Alquiler de autocaravanas'
- 
+    def _check_capacity(self, cr, uid, ids):   
+        for  alquiler in self.browse(cr, uid, ids):
+            if alquiler.importe < 0 or alquiler.importe > 20000: 
+                return False 
+        return True
     _columns = {
             'id_cards':fields.char('Id', size=9, required=True),         
             'importe':fields.float('importe',required=True),
@@ -39,3 +43,4 @@ class alquiler(osv.Model):
             'state':fields.selection([('solicitado', 'Solicitado'),('admitido', 'Admitido'), ('cancelado', 'Cancelado'),('realizado','Realizado')], 'Estados'),
         }
     _defaults = {'state':'solicitado'}
+    _constraints = [(_check_capacity, '¡ Importe incorrecto !' , [ 'importe' ])]
