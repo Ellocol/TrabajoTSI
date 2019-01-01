@@ -29,11 +29,15 @@ class cliente(osv.Model):
     _description = 'Informacion del cliente'
     def _ocupacionTotal(self, cr, uid, ids, field, arg, context=None):                    
         res = {} 
-        
-        # Recorre todas las clases y calcula el número de gymusers asociados
-        for clase in self.browse(cr, uid, ids, context=context):        
-            res[clase.id] = len(clase.alquiler_ids)    
+        for cliente in self.browse(cr, uid, ids, context=context):        
+            res[cliente.id] = len(cliente.alquiler_ids)    
         return    res 
+    
+    def _check_capacity(self, cr, uid, ids):   
+        for cliente in self.browse(cr, uid, ids):
+            if cliente.alquiler_ids < 0 or cliente.alquiler_ids > 2: 
+                return False 
+        return True
     
     _columns = {
             'name':fields.char('Nombre', size=64, required=True),
@@ -49,3 +53,5 @@ class cliente(osv.Model):
             
         }
     _sql_constraints = [ ('dni_uniq', 'unique (dni)', 'El dni ya existe'),  ]
+    
+    _constraints = [(_check_capacity, '¡ Numero de alquileres incorrectos !' , [ 'alquiler_ids' ])]
