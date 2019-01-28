@@ -1,0 +1,10 @@
+.errores{
+    opacity:0;
+    color:red;
+    font-size: small;
+}
+
+#divCoche,#divRopa{
+    padding-left: 15px;
+    display: none;
+}
